@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de perfumes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="cabecera-fila">
+      <a class="marca" href="#" aria-label="Inicio">
+        <img class="marca-logo" src="IMG/Logo_Pampa.jpeg" alt="Logo Pampa Fragancias">
+        <span id="nombreNegocio" class="marca-texto" hidden></span>
+      </a>
+      <div class="buscador">
+        <input id="buscar" type="search" placeholder="Buscar perfume" aria-label="Buscar perfume">
+      </div>
+    </div>
+    <div class="filtros">
+      <label class="check">
+        <input id="soloDisponibles" type="checkbox"> Solo con stock
+      </label>
+      <label class="orden">Ordenar
+        <select id="orden">
+          <option value="numero">Número</option>
+          <option value="precioAsc">Precio: menor a mayor</option>
+          <option value="precioDesc">Precio: mayor a menor</option>
+          <option value="nombre">Nombre</option>
+        </select>
+      </label>
+      <span id="contador" class="contador" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <div id="barraAdmin" class="barra-admin" hidden>
+    <p>Modo edición: los cambios se guardan en este dispositivo. Para que tus clientes vean los precios nuevos, descargá el archivo y los cambios se guardan en este dispositivo. Podés descargar una copia del catálogo.</p>
+    <div class="barra-botones">
+      <button id="btnDescargar" class="btn btn-principal">Descargar copia del catálogo</button>
+      <button id="btnDescartar" class="btn">Descartar cambios</button>
+      <button id="btnSalir" class="btn">Salir de edición</button>
+    </div>
+  </div>
+
+  <main>
+    <section id="grilla" class="grilla" aria-label="Perfumes"></section>
+    <p id="vacio" class="vacio" hidden>No hay perfumes que coincidan con tu búsqueda.</p>
+  </main>
+
+  <footer class="pie">
+    <span id="pieNegocio"></span>
+    <button id="btnEditar" class="enlace-discreto">Editar precios y stock</button>
+  </footer>
+
+  <dialog id="visor" class="visor">
+    <button class="visor-cerrar" id="visorCerrar" aria-label="Cerrar">&times;</button>
+    <div class="visor-img"><img id="visorImg" alt=""></div>
+    <div class="visor-info">
+      <h2 id="visorNombre"></h2>
+      <p id="visorPrecio" class="precio"></p>
+      <p id="visorStock"></p>
+      <a id="visorWsp" class="btn btn-principal" hidden target="_blank" rel="noopener">Consultar por WhatsApp</a>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+:root {
+  --papel: #3D0103;
+  --tarjeta: #ffffff;
+  --vidrio: #e6e1f0;
+  --tinta: #241c36;
+  --tinta-suave: #6b6480;
+  --linea: #d9d3e6;
+  --dorado: #a9791f;
+  --ok: #2b7a57;
+  --poco: #b8621a;
+  --agotado: #8a8794;
+  --radio: 14px;
+  --fuente-titulo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --fuente-texto: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+  padding: 12px 20px 10px;
+}
+
+.cabecera-fila {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+
+.marca-logo {
+  display: block;
+  width: 190px;
+  height: 86px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 0;
+  flex: 0 0 auto;
+}
+
+.marca-texto {
+  font-family: var(--fuente-titulo);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: #d5b36a;
+}
+
+.buscador { flex: 1; }
+
+.buscador input {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--tarjeta);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  max-width: 1200px;
+  margin: 10px auto 0;
+  font-size: 0.92rem;
+  color: var(--tinta-suave);
+}
+
+.check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--tinta); }
+
+.orden { display: inline-flex; align-items: center; gap: 8px; }
+.orden select {
+  padding: 6px 10px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  background: var(--tarjeta);
+}
+
+.contador { margin-left: auto; }
+
+/* ---------- Barra de edición ---------- */
+.barra-admin {
+  background: var(--tinta);
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.barra-admin[hidden] { display: none; }
+.barra-admin p { margin: 0; max-width: 62ch; font-size: 0.92rem; }
+.barra-botones { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--tarjeta);
+  color: var(--tinta);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--vidrio); }
+.btn-principal { background: var(--dorado); border-color: var(--dorado); color: #fff; }
+.btn-principal:hover { background: #8f6618; }
+
+/* ---------- Grilla de perfumes ---------- */
+main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 48px; }
+
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.tarjeta.agotado .foto img { filter: grayscale(0.85); opacity: 0.6; }
+
+.foto {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  background: var(--vidrio);
+  cursor: zoom-in;
+}
+.foto img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.cuerpo { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+
+.nombre {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.precio { margin: 0; font-size: 1.3rem; font-weight: 600; }
+.precio.consultar { font-size: 1rem; font-weight: 500; color: var(--tinta-suave); }
+
+.stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.stock::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.stock.ok { color: var(--ok); }
+.stock.poco { color: var(--poco); }
+.stock.agotado { color: var(--agotado); }
+
+.vacio { text-align: center; color: var(--tinta-suave); padding: 40px 0; }
+
+/* ---------- Edición dentro de la tarjeta ---------- */
+.editor {
+  display: grid;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+.editor label { display: grid; gap: 3px; font-size: 0.8rem; color: var(--tinta-suave); }
+.editor input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--tinta);
+}
+.editor-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ---------- Pie ---------- */
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid var(--linea);
+  color: var(--tinta-suave);
+  font-size: 0.88rem;
+}
+.enlace-discreto {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--tinta-suave);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Visor ampliado ---------- */
+.visor {
+  width: min(860px, 94vw);
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--tarjeta);
+  color: var(--tinta);
+  overflow: auto;
+}
+.visor[open] { display: grid; grid-template-columns: 1.1fr 1fr; }
+.visor::backdrop { background: rgba(36, 28, 54, 0.6); }
+
+.visor-img { background: var(--vidrio); display: grid; place-items: center; min-height: 320px; }
+.visor-img img { width: 100%; max-height: 80vh; object-fit: contain; display: block; }
+
+.visor-info { padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.visor-info h2 { margin: 0; font-family: var(--fuente-titulo); font-size: 2.2rem; line-height: 1.1; }
+
+.visor-cerrar {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- Celulares ---------- */
+@media (max-width: 640px) {
+  .cabecera { padding: 8px 12px; }
+  .cabecera-fila { gap: 12px; }
+  .marca-logo {
+    width: 138px;
+    height: 62px;
+  }
+  .marca-texto { font-size: 1.3rem; }
+  main { padding: 16px 12px 40px; }
+  .grilla { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .nombre { font-size: 1.15rem; }
+  .precio { font-size: 1.1rem; }
+  .cuerpo { padding: 10px 12px 12px; }
+  .editor { padding: 0 12px 12px; }
+  .contador { margin-left: 0; width: 100%; }
+  .visor[open] { grid-template-columns: 1fr; }
+  .visor-info { padding: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.foto img.imagen-fallback { object-fit: contain; padding: 24px; }
